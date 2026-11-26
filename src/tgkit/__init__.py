@@ -8,6 +8,7 @@ from __future__ import annotations
 from .callback_data import CallbackDataTooLong, pack_callback, unpack_callback
 from .idempotency import MemoryUpdateStore, SQLiteUpdateStore
 from .initdata import InitDataError, validate_init_data, validate_init_data_ed25519
+from .ratelimit import TokenBucket
 from .retry import call_with_retry
 from .text import split_message
 
@@ -16,6 +17,7 @@ __all__ = [
     "InitDataError",
     "MemoryUpdateStore",
     "SQLiteUpdateStore",
+    "TokenBucket",
     "call_with_retry",
     "pack_callback",
     "split_message",

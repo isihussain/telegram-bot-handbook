@@ -36,6 +36,22 @@ def allowed(user_id: int, now: float | None = None) -> bool:
 
 For multiple workers, use Redis (`INCR` + `EXPIRE`) instead of a local dict.
 
+`tgkit.ratelimit.TokenBucket` packages the same idea with refill and a `retry_after` hint:
+
+```python
+from tgkit.ratelimit import TokenBucket
+
+limiter = TokenBucket(capacity=5, refill_per_second=0.5)  # burst 5, then 1 per 2 s
+
+if not limiter.allow(user_id):
+    wait = limiter.retry_after(user_id)
+    await message.reply_text(f"Slow down. Try again in {wait:.1f}s.")
+    return
+```
+
+It is thread-safe and per-process. With several workers, keep the counter in Redis; otherwise
+each worker enforces its own budget.
+
 ## 3. Handling 429 properly
 
 ```python
