@@ -214,6 +214,7 @@ Copy-paste sized helpers, each with tests. Import them, or read them as referenc
 | [`tgkit.callback_data`](src/tgkit/callback_data.py) | `pack_callback` / `unpack_callback` with a hard 64-byte check |
 | [`tgkit.idempotency`](src/tgkit/idempotency.py) | `MemoryUpdateStore`, `SQLiteUpdateStore` — claim an `update_id` once |
 | [`tgkit.retry`](src/tgkit/retry.py) | `call_with_retry` — honours `RetryAfter`, skips permanent errors |
+| [`tgkit.ratelimit`](src/tgkit/ratelimit.py) | `TokenBucket` — per-key bursts, refill and a `retry_after` hint |
 | [`tgkit.broadcast`](src/tgkit/broadcast.py) | `broadcast` — paced sending, records blocked users |
 | [`tgkit.text`](src/tgkit/text.py) | `split_message` — 4096-character safe splitting |
 | [`tgkit.config`](src/tgkit/config.py) | `Settings.from_env`, `generate_webhook_secret`, `redact` |
