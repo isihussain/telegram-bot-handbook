@@ -65,6 +65,7 @@ Key limits: message text 1-4096 characters, captions 0-1024, callback data 1-64 
 - [Error Reference](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/08-reference/01-error-reference.md): common Bot API error descriptions and fixes.
 - [API Method Cheatsheet](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/08-reference/03-api-cheatsheet.md): every method grouped by job, with the limit or permission that bites.
 - [Glossary](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/08-reference/02-glossary.md): vocabulary used by the Bot API and this handbook.
+- [Cookbook](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/09-cookbook/01-support-inbox.md): Recipe: Support Inbox with Forum Topics.
 
 ## Code
 

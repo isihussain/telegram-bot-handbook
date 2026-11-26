@@ -305,6 +305,14 @@ first: every fact needs a source, every Python block must parse, and secrets nev
 - One topic per pull request.
 - Update the `Applies to` line when behaviour changes.
 
+## 9. Cookbook
+
+A collection of practical, standalone recipes for real-world bot scenarios. Each recipe
+contains a self-contained problem, a solution with copy-paste code, and a link to the
+corresponding documentation page. See \`docs/09-cookbook/\` for the current recipes.
+
+- [Recipe: Support Inbox with Forum Topics](docs/09-cookbook/01-support-inbox.md)
+
 ## License
 
 MIT. Use the pages and the code however you like; attribution is appreciated.
