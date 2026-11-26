@@ -23,12 +23,21 @@ Bot API and library versions and the verification date, and a `Sources` section.
 
 ```bash
 python -m venv .venv && source .venv/bin/activate   # Python 3.11+
-pip install -e ".[dev]"
+make install          # pip install -e ".[dev]"
+make check            # lint + docs + tests
+```
+
+`make` is a shortcut for the commands CI runs; run them directly if you prefer:
+
+```bash
 ruff check .
 python scripts/check_docs.py          # allows links to pages listed in llms.txt
 python scripts/check_docs.py --strict # every linked file must exist (run before a release)
 pytest
 ```
+
+Other targets: `make docs`, `make docs-strict`, `make test`, `make run` and `make clean`.
+Run `make` with no arguments to list them.
 
 ## Pull requests
 
