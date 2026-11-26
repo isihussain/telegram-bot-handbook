@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![CI](https://github.com/isihussain/telegram-bot-handbook/actions/workflows/ci.yml/badge.svg)](https://github.com/isihussain/telegram-bot-handbook/actions/workflows/ci.yml)
 
-38 focused pages. Every limit, parameter and behaviour is checked against the official Telegram
+39 focused pages. Every limit, parameter and behaviour is checked against the official Telegram
 docs and pinned to a version, so you can tell whether a page is still true. Runnable examples and a
 small tested helper library (`tgkit`) are included — no bot token needed to run the test suite.
 
@@ -110,6 +110,7 @@ This handbook covers each of them once, properly, with the exact numbers and a f
 | :--- | :--- |
 | [Library Comparison](docs/07-libraries/01-comparison.md) | python-telegram-bot, aiogram, grammY, Telegraf and friends, with real numbers |
 | [Error Reference](docs/08-reference/01-error-reference.md) | The `description` strings you will actually see, and the fix for each |
+| [API Method Cheatsheet](docs/08-reference/03-api-cheatsheet.md) | Every method grouped by job, with the limit or permission that bites |
 | [Glossary](docs/08-reference/02-glossary.md) | Every term used in the Bot API and in this handbook |
 
 ---
