@@ -1,0 +1,24 @@
+name: Doc correction
+description: Something in the handbook is wrong, outdated or unclear
+labels: [documentation]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      placeholder: docs/01-foundations/05-limits-cheatsheet.md
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Official source (link)
+      description: Bot API docs, changelog, library source or release notes
+    validations:
+      required: true

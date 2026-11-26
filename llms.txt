@@ -1,0 +1,73 @@
+# Telegram Bot Handbook
+
+> Practical, tested cheat sheets and runnable examples for building, securing and scaling Telegram bots with python-telegram-bot (Bot API 10.5, python-telegram-bot 22.8, verified 2026-11-26).
+
+Every page starts with a TL;DR and an "Applies to" line, and ends with the official sources for its claims. Code examples are Python 3.11+ using python-telegram-bot. The repository also contains a small tested helper library, `tgkit`, and 10 runnable example bots.
+
+Key limits: message text 1-4096 characters, captions 0-1024, callback data 1-64 bytes, bot command 1-32 characters, deep-link payload 64 characters, inline results 50 per answer, media group 2-10 items, upload 50 MB (photos 10 MB), download 20 MB, webhook ports 443/80/88/8443, webhook secret 1-256 chars, pre-checkout answer deadline 10 seconds, broadcast ~30 messages/second (1000/s with paid broadcasts).
+
+## Foundations
+
+- [Bot API Overview](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/01-foundations/01-bot-api-overview.md): updates in, methods out; raw API calls; handler model; Bot API vs library versioning.
+- [BotFather and Tokens](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/01-foundations/02-botfather-and-tokens.md): creating a bot, useful BotFather commands, token storage, what a leaked token allows.
+- [Polling vs Webhooks](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/01-foundations/03-polling-vs-webhooks.md): trade-off table, webhook requirements, migration checklist.
+- [Update Types and Subscriptions](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/01-foundations/04-update-types-and-subscriptions.md): every Update field, allowed_updates, handler groups, duplicates.
+- [Limits Cheatsheet](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/01-foundations/05-limits-cheatsheet.md): message, file, callback, poll, flood and payment limits with sources.
+- [Privacy Mode in Groups](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/01-foundations/06-privacy-mode-in-groups.md): which group messages a bot receives and how to change it.
+
+## Interaction
+
+- [Formatting and Parse Modes](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/02-interaction/01-formatting-parse-modes.md): HTML, MarkdownV2, entities, escaping, UTF-16 offsets.
+- [Keyboards: Inline vs Reply](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/02-interaction/02-keyboards-inline-vs-reply.md): capabilities, editing, removal, when not to use buttons.
+- [Callback Queries](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/02-interaction/03-callback-queries.md): answer-first pattern, safe edits, 64-byte data, state outside the button.
+- [Inline Mode](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/02-interaction/04-inline-mode.md): enabling it, 50-result pagination, caching, result types.
+- [Deep Links](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/02-interaction/05-deep-links.md): start payloads, startapp, validation, attribution.
+- [Media and Files](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/02-interaction/06-media-and-files.md): file_id reuse, upload/download limits, albums, upload validation.
+- [Commands and Menu](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/02-interaction/07-commands-and-menu.md): setMyCommands, scopes, localisation, menu button.
+- [Polls and Quizzes](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/02-interaction/08-polls-and-quizzes.md): sendPoll, correct_option_ids, poll_answer, anonymity semantics.
+
+## State
+
+- [Conversations and FSM](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/03-state/01-conversations-and-fsm.md): ConversationHandler vs explicit state, timeouts, concurrency.
+- [Persistence and Storage](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/03-state/02-persistence-and-storage.md): user_data, PicklePersistence, database schema, migrations.
+- [Idempotent Updates](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/03-state/03-idempotent-updates.md): duplicate causes, claim by update_id, SQLite/Redis/Postgres.
+- [JobQueue](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/03-state/04-job-queue.md): one-off, daily and repeating jobs, time zones, restart behaviour.
+
+## Advanced
+
+- [Mini Apps Overview](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/04-advanced/01-mini-apps-overview.md): seven launch modes, minimal frontend/backend, security rules.
+- [initData Validation](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/04-advanced/02-miniapp-initdata-validation.md): HMAC-SHA256 and Ed25519, data-check-string, failure modes, test signing.
+- [Telegram Stars](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/04-advanced/03-stars-payments.md): XTR invoices, 10-second pre-checkout, idempotent delivery, refunds.
+- [Streaming Replies](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/04-advanced/04-streaming-ai-replies.md): sendMessageDraft, 30-second preview, stop handling, throttling.
+- [Groups, Channels and Permissions](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/04-advanced/05-groups-channels-permissions.md): admin rights, restrict/promote/ban, join requests, guard bots.
+- [Local Bot API Server](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/04-advanced/06-local-bot-api-server.md): 2000 MB uploads, any webhook port, moving between servers.
+- [Bot API 10.x Changes](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/04-advanced/07-bot-api-10-changes.md): 2026 changelog summary and do_api_request for unwrapped methods.
+
+## Security
+
+- [Webhook and Secrets](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/05-security/01-webhook-and-secrets.md): secret_token, subnet allow-list, fast-200, anti-patterns.
+- [Token Leak Response](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/05-security/02-token-leak-response.md): first 10 minutes, attacker capabilities, git history, checklist.
+- [Input Validation](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/05-security/03-input-validation.md): trust boundaries, allow-lists, injection classes, file uploads, authorisation.
+- [Flood and Abuse Control](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/05-security/04-flood-and-abuse-control.md): per-user limits, 429 handling, broadcast pacing, moderation tools.
+
+## Production
+
+- [Deployment: Docker and systemd](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/06-production/01-deployment-docker-systemd.md): Dockerfile, Compose, systemd unit, health checks, release checklist.
+- [Scaling: Queues and Workers](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/06-production/02-scaling-queues-workers.md): growth stages, ingress/queue/workers, per-chat ordering, sharding.
+- [Errors, 429s and Retries](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/06-production/03-errors-429-and-retries.md): retry classes, duplicate sends, ChatMigrated, Conflict.
+- [Logging and Observability](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/06-production/04-logging-and-observability.md): structured logs, timing, metrics, alerts, privacy.
+- [Testing Bots](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/06-production/05-testing-bots.md): test pyramid, wiring tests, fake bots, Update builders, CI.
+- [Troubleshooting](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/06-production/06-troubleshooting.md): symptom-to-cause table, five-minute triage, works-then-stops.
+
+## Reference
+
+- [Library Comparison](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/07-libraries/01-comparison.md): python-telegram-bot, aiogram, pyTelegramBotAPI, grammY, Telegraf, node-telegram-bot-api.
+- [Error Reference](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/08-reference/01-error-reference.md): common Bot API error descriptions and fixes.
+- [Glossary](https://github.com/isihussain/telegram-bot-handbook/blob/main/docs/08-reference/02-glossary.md): vocabulary used by the Bot API and this handbook.
+
+## Code
+
+- [tgkit](https://github.com/isihussain/telegram-bot-handbook/tree/main/src/tgkit): initData validation, callback packing, update de-duplication, retry, broadcast pacing, message splitting, config.
+- [Examples](https://github.com/isihussain/telegram-bot-handbook/tree/main/examples): 10 runnable bots from hello-world to a production template.
+- [Tests](https://github.com/isihussain/telegram-bot-handbook/tree/main/tests): 52 offline tests, no token required.
+- [Contributing](https://github.com/isihussain/telegram-bot-handbook/blob/main/CONTRIBUTING.md): source requirements and local setup.

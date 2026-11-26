@@ -1,0 +1,16 @@
+name: Topic request
+description: Suggest a new cheat sheet or example
+labels: [enhancement]
+body:
+  - type: input
+    id: topic
+    attributes:
+      label: Topic
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why would bot developers need this?
+    validations:
+      required: true
