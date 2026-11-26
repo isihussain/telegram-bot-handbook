@@ -25,7 +25,8 @@ Bot API and library versions and the verification date, and a `Sources` section.
 python -m venv .venv && source .venv/bin/activate   # Python 3.11+
 pip install -e ".[dev]"
 ruff check .
-python scripts/check_docs.py
+python scripts/check_docs.py          # allows links to pages listed in llms.txt
+python scripts/check_docs.py --strict # every linked file must exist (run before a release)
 pytest
 ```
 

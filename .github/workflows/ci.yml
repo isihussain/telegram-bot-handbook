@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   pull_request:
+  schedule:
+    # Weekly strict check: every linked file must exist, even across categories.
+    - cron: "0 6 * * 1"
 
 permissions:
   contents: read
@@ -28,8 +31,11 @@ jobs:
       - name: Lint
         run: ruff check .
       - name: Check docs
-        run: |
-          if [ -f scripts/check_docs.py ]; then python scripts/check_docs.py; fi
+        if: github.event_name != 'schedule'
+        run: python scripts/check_docs.py
+      - name: Check docs (strict)
+        if: github.event_name == 'schedule'
+        run: python scripts/check_docs.py --strict
       - name: Tests
         run: |
           if [ -d tests ]; then pytest -q; fi
